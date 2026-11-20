@@ -98,12 +98,13 @@ The browser half also long-polls `GET /frames` for toasts and exposes
 
 ```
 plugin_manager install_bundle
-  target: git+https://github.com/lag-aa/dsh.git#<40-character-commit>&path:/plugins/dsh-notify
+  target: git+https://github.com/lag-aa/dsh.git#main&path:/plugins/dsh-notify
 ```
 
-`path:` is required, otherwise the repository root is installed. A local directory works
-too: **Plugins** → **Add plugin**. The bundle patch inserts one row (`id: dsh-notify`,
-`name: dsh-notify`); nothing secret belongs in it.
+`path:` is required, otherwise the repository root is installed. `#main` carries the latest
+version, and the copy is fixed when it is installed: updating means installing again. A local
+directory works too: **Plugins** → **Add plugin**. The bundle patch inserts one row
+(`id: dsh-notify`, `name: dsh-notify`); nothing secret belongs in it.
 
 Do not keep two copies of this plugin active at once: both would poll the same frames and
 raise the same toast twice.

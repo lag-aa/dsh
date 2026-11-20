@@ -24,7 +24,8 @@
 
 ```
 plugin_manager install_bundle
-  target: git+https://github.com/lag-aa/dsh.git#<40-символьный коммит>&path:/plugins/dsh-notify
+  target: git+https://github.com/lag-aa/dsh.git#main&path:/plugins/dsh-notify
 ```
 
-`path:` обязателен — без него установится корень репозитория.
+`path:` обязателен — без него установится корень репозитория. `#main` — последняя версия;
+обновить копию — значит повторить установку.

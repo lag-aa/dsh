@@ -148,16 +148,17 @@ file tab the plugin intercepts belongs to [dsh-better-sidebar](https://github.co
 which is **optional**: without it the plugin still draws `.md` files as the document renderer,
 but the file-viewer tab keeps the shipped viewer.
 
-Install from the catalog repository, pinned to a full commit so the copy stays updatable:
+Install from the catalog repository:
 
 ```
 plugin_manager install_bundle
-  target: git+https://github.com/lag-aa/dsh.git#<40-character commit>&path:/plugins/dsh-markdown-diff
+  target: git+https://github.com/lag-aa/dsh.git#main&path:/plugins/dsh-markdown-diff
 ```
 
 The plugin sits in `lag-aa/dsh` as `plugins/dsh-markdown-diff`, so the spec carries `path:`
-— without it the repository root would be installed instead. A branch or tag spec installs but
-cannot be updated in place.
+— without it the repository root would be installed instead. `#main` is the latest version,
+and the copy is fixed at install time: to update, install again. A tag can stand in for
+`main` when a pinned version is wanted.
 
 A local checkout works too: **Plugins** → **Add plugin** takes a directory, as does
 `plugin_manager install_bundle` with its absolute path.

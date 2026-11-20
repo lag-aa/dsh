@@ -13,24 +13,19 @@
 
 ```
 plugin_manager install_bundle
-  target: git+https://github.com/lag-aa/dsh.git#<40-символьный коммит>&path:/plugins/dsh-markdown-diff
+  target: git+https://github.com/lag-aa/dsh.git#main&path:/plugins/dsh-markdown-diff
 ```
 
-`path:` обязателен: без него установится корень репозитория, а не плагин. В спеке нужен
-полный 40-символьный коммит, а не ветка — такую копию можно обновлять
-(`plugin_manager` переустанавливает ветку вместо обновления). Для второго плагина меняется
-только `path:`:
+`path:` обязателен: без него установится корень репозитория, а не плагин. `#main` — ветка
+с последней версией. Для второго плагина меняется только `path:`:
 
 ```
 plugin_manager install_bundle
-  target: git+https://github.com/lag-aa/dsh.git#<40-символьный коммит>&path:/plugins/dsh-notify
+  target: git+https://github.com/lag-aa/dsh.git#main&path:/plugins/dsh-notify
 ```
 
-Текущий коммит ветки `main`:
-
-```
-git ls-remote https://github.com/lag-aa/dsh.git refs/heads/main
-```
+Копия ставится на момент установки: чтобы подтянуть новую версию, повторите установку.
+Нужна закреплённая версия — вместо `main` укажите тег.
 
 Локальная копия тоже годится: **Plugins** → **Add plugin** принимает каталог.
 

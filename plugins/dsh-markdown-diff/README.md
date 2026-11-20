@@ -38,12 +38,12 @@
 
 ```
 plugin_manager install_bundle
-  target: git+https://github.com/lag-aa/dsh.git#<40-символьный коммит>&path:/plugins/dsh-markdown-diff
+  target: git+https://github.com/lag-aa/dsh.git#main&path:/plugins/dsh-markdown-diff
 ```
 
 Плагин лежит в репозитории `lag-aa/dsh` каталогом `plugins/dsh-markdown-diff`, поэтому в
-спеке есть `path:` — без него установится корень репозитория. Полный коммит, а не ветка:
-такую копию потом можно обновлять.
+спеке есть `path:` — без него установится корень репозитория. `#main` — последняя версия;
+копия ставится на момент установки, чтобы обновить — повторите установку.
 
 Локальный каталог тоже годится: **Plugins** → **Add plugin**. Плагин подменяет штатный
 просмотр `.md`; вкладку файлов перехватывает только вместе с
