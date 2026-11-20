@@ -1,0 +1,13 @@
+# Bundle patch layer: the row loads this package's main entry as the Host half
+# (a Cordis plugin exposing the /dsh-notify-8261 routes, the frame queue and the
+# settings page), and the package's `dsh.client` declaration makes the Web app
+# load ./client.js as the browser half that actually raises the system toast.
+#
+# Nothing secret belongs in the row: the webhook URL — which carries the endpoint
+# token — is a credential record (`dsh-notify/webhook`), written from
+# Settings → Notifications. The optional `webhook.url` field of an older install
+# is imported into that record once on the first boot.
+- insert:
+    - id: dsh-notify
+      name: dsh-notify
+

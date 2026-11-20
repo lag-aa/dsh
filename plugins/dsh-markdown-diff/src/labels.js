@@ -1,0 +1,226 @@
+/**
+ * Plugin-owned interface text.
+ *
+ * The Client locale service accepts any BCP 47 id, but the dictionaries ship per
+ * language rather than per plugin, so the bundle is chosen from the page
+ * language the same way the workspace-git plugin does it. Labels are read through
+ * {@link currentLabels} so a language change needs no re-registration.
+ *
+ * @module dsh-markdown-diff/labels
+ */
+
+/** Russian bundle, for the `ru` preference this desktop runs under. */
+export const ru = {
+  viewerLabel: 'Markdown с изменениями',
+  toolbar: {
+    inline: 'В тексте',
+    sideBySide: 'Рядом',
+    plain: 'Без подсветки',
+    viewHint: 'Как показывать изменения',
+    baseBranch: 'Ветка',
+    baseHead: 'HEAD',
+    baseIndex: 'Индекс',
+    baseHint: 'С чем сравнивать',
+    baseHeadHint: 'HEAD — все незакоммиченные правки',
+    baseIndexHint: 'Индекс — только неиндексированные правки',
+    branchHint: 'Ветка для сравнения',
+    branchPick: 'Выберите ветку…',
+    branchTip: 'Верхушка ветки',
+    branchTipHint: 'Сравнить с последним коммитом ветки — видно и то, что в ней появилось без вас',
+    branchPoint: 'Точка ветвления',
+    branchPointHint: 'Сравнить с коммитом, от которого ветка отошла, — только ваши правки',
+    branchEmpty: 'В этом репозитории нет ветвей для сравнения.',
+    reload: 'Пересчитать',
+    showRemoved: 'Показывать удалённое',
+    hideRemoved: 'Скрыть удалённое',
+    showRemovedHint: 'Показывать старый текст изменённых блоков и блоки, удалённые целиком',
+    hideRemovedHint: 'Каждый изменённый блок рисуется один раз — только новый текст',
+  },
+  markdown: {
+    copy: 'Копировать',
+    copied: 'Скопировано',
+    codeLabel: 'Код',
+    wrap: 'Переносить',
+    unwrap: 'Не переносить',
+    footnotes: 'Сноски',
+  },
+  frontmatter: {
+    title: 'Свойства',
+    collapse: 'Свернуть свойства',
+    expand: 'Развернуть свойства',
+    count: (n) => `Полей: ${String(n)}`,
+    empty: 'Пустой блок свойств',
+  },
+  comment: {
+    add: 'Комментировать выделенное',
+    hint: 'Ctrl+Enter — отправить, Esc — отмена',
+    placeholder: 'Что здесь поправить или уточнить?',
+    send: 'В диалог',
+    cancel: 'Отмена',
+    // What the message says before the remark, so the quotation and the reader's
+    // own words cannot be taken for one another. Punctuation stays inside the
+    // label: `comments.js` only adds the emphasis around it.
+    remark: 'Замечание:',
+    // The suffix on the address when the quotation is the old half of a change:
+    // its line numbers belong to the comparison base, not to the file on disk.
+    oldVersion: ' · старая версия',
+    tooLong: (n) => `Выделено больше ${String(n)} символов — цитата не поедет, уйдут только адрес и замечание`,
+    errors: {
+      empty: 'Комментарий пуст.',
+      'no-session': 'У файла нет сессии — писать некуда.',
+      'no-chat': 'Диалог недоступен: вставить комментарий некуда.',
+      busy: 'Диалог отправляет сообщение — повторите через пару секунд.',
+      refused: 'Диалог отклонил вставку.',
+      failed: 'Не удалось добавить комментарий в диалог.',
+    },
+  },
+  columnWorktree: 'Рабочее дерево',
+  summary: (mark) => `Изменения: ${mark}`,
+  unchanged: 'Изменений нет',
+  incomplete: 'Файл загружен не целиком — подсветка появится, когда дочитается остальное.',
+  tooLarge: 'Файл слишком велик для подсветки — откройте его в редакторе.',
+  loading: 'Сравниваю с git…',
+  removed: 'Удалено',
+  notRepository: 'Рабочий каталог вне git-репозитория — показан обычный просмотр.',
+  unavailable: (message) => `Не удалось прочитать сравнение: ${message}`,
+  absentIn: (ref) => `Этого файла нет в ${ref} — показан целиком как добавленный.`,
+  retry: 'Повторить',
+  settings: {
+    nav: 'Подсветка изменений',
+    title: 'Подсветка изменений в просмотре Markdown',
+    mode: 'Режим отображения',
+    modeInline: 'В тексте',
+    modeSideBySide: 'Рядом',
+    modePlain: 'Без подсветки',
+    base: 'С чем сравнивать',
+    baseHead: 'HEAD — все незакоммиченные правки',
+    baseIndex: 'Индекс — только неиндексированные правки',
+    baseBranch: 'Ветка — выбранная вами ветка',
+    branch: 'Ветка',
+    branchHint: 'Список ветвей репозитория. Точка ветвления сравнивает с коммитом, от которого ветка отошла.',
+    point: 'Что считать базой ветки',
+    pointTip: 'Верхушка ветки',
+    pointMergeBase: 'Точка ветвления',
+    showRemoved: 'Показывать удалённое',
+    hotkey: 'Сочетание клавиш для комментария',
+    hotkeyHint: 'Нажмите сочетание — поле запишет его. Esc отключает. Нужен Ctrl, Alt или Meta: одинокая клавиша срабатывала бы во время чтения.',
+    hotkeyNeed: 'Нужен Ctrl, Alt или Meta — без них сочетание не запишется.',
+    hotkeyEmpty: 'Выключено — нажмите сочетание',
+    hotkeyDefault: 'По умолчанию',
+    hotkeyOff: 'Выключить',
+    reset: 'Вернуть по умолчанию',
+    openPreview: 'Открыть предпросмотр Markdown',
+    openHint: 'Настройка действует на новые вкладки просмотра.',
+  },
+  groups: (n) => `Групп: ${String(n)}`,
+};
+
+/** Chinese bundle, matching the shipped shells. */
+export const zh = {
+  viewerLabel: '带更改的 Markdown',
+  toolbar: {
+    inline: '行内',
+    sideBySide: '并排',
+    plain: '无高亮',
+    viewHint: '如何显示更改',
+    baseHead: 'HEAD',
+    baseIndex: '索引',
+    baseBranch: '分支',
+    baseHint: '比较基准',
+    baseHeadHint: 'HEAD — 所有未提交更改',
+    baseIndexHint: '索引 — 仅未暂存的更改',
+    branchHint: '用于比较的分支',
+    branchPick: '选择分支…',
+    branchTip: '分支顶端',
+    branchTipHint: '与该分支的最新提交比较 —— 也能看到分支上别人的改动',
+    branchPoint: '分叉点',
+    branchPointHint: '与分支分叉时的提交比较 —— 只有你自己的改动',
+    branchEmpty: '此仓库没有可用于比较的分支。',
+    reload: '重新比较',
+    showRemoved: '显示已删除',
+    hideRemoved: '隐藏已删除',
+    showRemovedHint: '显示已修改块的旧文本，以及整块删除的内容',
+    hideRemovedHint: '每个已修改的块只显示一次 —— 只有新文本',
+  },
+  markdown: {
+    copy: '复制',
+    copied: '已复制',
+    codeLabel: '代码',
+    wrap: '自动换行',
+    unwrap: '不换行',
+    footnotes: '脚注',
+  },
+  frontmatter: {
+    title: '属性',
+    collapse: '收起属性',
+    expand: '展开属性',
+    count: (n) => `字段：${String(n)}`,
+    empty: '空属性块',
+  },
+  comment: {
+    add: '评论所选内容',
+    hint: 'Ctrl+Enter 发送，Esc 取消',
+    placeholder: '这里需要修改或确认什么？',
+    send: '加入对话',
+    cancel: '取消',
+    remark: '评论：',
+    oldVersion: ' · 旧版本',
+    tooLong: (n) => `所选内容超过 ${String(n)} 个字符，不会引用，只发送位置和评论`,
+    errors: {
+      empty: '评论为空。',
+      'no-session': '该文件没有会话 —— 无处可写。',
+      'no-chat': '对话不可用：无法插入评论。',
+      busy: '对话正在发送消息 —— 请稍后重试。',
+      refused: '对话拒绝了插入。',
+      failed: '无法把评论加入对话。',
+    },
+  },
+  columnWorktree: '工作树',
+  summary: (mark) => `更改：${mark}`,
+  unchanged: '没有更改',
+  incomplete: '文件尚未完全载入 — 读到后续部分后会显示高亮。',
+  tooLarge: '文件过大，无法高亮 — 请在编辑器中打开。',
+  loading: '正在与 git 比较…',
+  removed: '已删除',
+  notRepository: '工作区不在 git 仓库中 — 显示普通预览。',
+  unavailable: (message) => `读取比较失败：${message}`,
+  absentIn: (ref) => `该文件在 ${ref} 中不存在 —— 整篇按新增显示。`,
+  retry: '重试',
+  settings: {
+    nav: '更改高亮',
+    title: 'Markdown 预览的更改高亮',
+    mode: '显示模式',
+    modeInline: '行内',
+    modeSideBySide: '并排',
+    modePlain: '无高亮',
+    base: '比较基准',
+    baseHead: 'HEAD — 所有未提交更改',
+    baseIndex: '索引 — 仅未暂存的更改',
+    baseBranch: '分支 — 你选择的分支',
+    branch: '分支',
+    branchHint: '仓库分支列表。分叉点会与分支离开时的提交比较。',
+    point: '分支基准取哪一个提交',
+    pointTip: '分支顶端',
+    pointMergeBase: '分叉点',
+    showRemoved: '显示已删除',
+    hotkey: '添加评论的快捷键',
+    hotkeyHint: '按下组合键即可记录。Esc 关闭。必须包含 Ctrl、Alt 或 Meta：单独一个键会在阅读时误触。',
+    hotkeyNeed: '需要 Ctrl、Alt 或 Meta，否则无法记录。',
+    hotkeyEmpty: '未启用 — 按下组合键',
+    hotkeyDefault: '默认值',
+    hotkeyOff: '关闭',
+    reset: '恢复默认',
+    openPreview: '打开 Markdown 预览',
+    openHint: '设置对新开的预览标签页生效。',
+  },
+  groups: (n) => `分组：${String(n)}`,
+};
+
+/**
+ * The bundle for the page's current language.
+ * @returns the Chinese bundle on a `zh` page, the Russian one otherwise.
+ */
+export function currentLabels() {
+  const language = typeof navigator === 'undefined' ? '' : String(navigator.language ?? '');
+  return language.toLowerCase().startsWith('zh') ? zh : ru;
+}

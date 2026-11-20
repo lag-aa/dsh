@@ -1,0 +1,7 @@
+# Bundle patch layer: the row loads this package's main entry as the Host half
+# (the /api/markdown-diff.base route that reads the comparison base out of git),
+# and the package's `dsh.client` declaration makes the Web app load ./client.js
+# as the browser half that registers the Markdown diff renderer.
+- insert:
+    - id: markdown-diff
+      name: dsh-markdown-diff

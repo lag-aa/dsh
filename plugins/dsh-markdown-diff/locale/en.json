@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Markdown diff",
+    "description": "Highlights git changes in the right sidebar's Markdown preview: added, removed and modified blocks compared with HEAD, the index or a branch, inline or side by side, plus review comments sent to the chat draft."
+  }
+}

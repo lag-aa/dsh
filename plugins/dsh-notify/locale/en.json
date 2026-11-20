@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Notifications (dsh-notify)",
+    "description": "Tells you when the agent finished, is waiting for permission or an answer, failed, or a reminder fired — as a Windows notification, a webhook message, or both. Channel, quiet hours, address and token live in Settings, section “Notifications”."
+  }
+}
