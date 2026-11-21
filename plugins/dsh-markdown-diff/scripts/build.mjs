@@ -28,16 +28,18 @@ const externals = ['react', '@deepseek-ai/dsh-client-ui-primitives'];
 
 /** Locate the platform binary pnpm extracted for the `esbuild` package. */
 function esbuildBinary() {
+  const override = process.env.ESBUILD_BINARY;
   const candidates = [
+    override,
     join(root, 'node_modules', '@esbuild', 'win32-x64', 'esbuild.exe'),
     join(root, 'node_modules', '.pnpm', '@esbuild+win32-x64@0.28.2', 'node_modules', '@esbuild', 'win32-x64', 'esbuild.exe'),
-    // The sibling plugin already has the binary unpacked; sharing it keeps this
-    // package from needing an install of its own.
-    join(root, '..', 'dsh-workspace-git', 'node_modules', '.pnpm', '@esbuild+win32-x64@0.28.2', 'node_modules', '@esbuild', 'win32-x64', 'esbuild.exe'),
-  ];
+    // A sibling checkout of the other plugin already has the binary unpacked;
+    // sharing it keeps this package from needing an install of its own.
+    join(root, '..', '..', '..', 'dsh-workspace-git', 'node_modules', '.pnpm', '@esbuild+win32-x64@0.28.2', 'node_modules', '@esbuild', 'win32-x64', 'esbuild.exe'),
+  ].filter((candidate) => typeof candidate === 'string');
   const found = candidates.find((candidate) => existsSync(candidate));
   if (found === undefined) {
-    throw new Error('esbuild is not installed: run "pnpm add -D esbuild" in this package first');
+    throw new Error('esbuild is not installed: set ESBUILD_BINARY or run "pnpm add -D esbuild" in this package first');
   }
   return found;
 }

@@ -57,7 +57,7 @@ export const DEFAULTS = Object.freeze({
   base: 'head',
   branch: '',
   point: 'tip',
-  showRemoved: true,
+  showRemoved: false,
   commentHotkey: HOTKEY_DEFAULT,
 });
 
