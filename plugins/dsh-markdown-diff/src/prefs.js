@@ -49,7 +49,7 @@ export const BASES = Object.freeze(['head', 'index', 'ref']);
 export const POINTS = Object.freeze(['tip', 'merge-base']);
 
 /**
- * Defaults: inline marks, uncommitted changes as the base, removals shown, and a
+ * Defaults: inline marks, uncommitted changes as the base, removals hidden, and a
  * shortcut for the comment box that no DSH surface claims.
  */
 export const DEFAULTS = Object.freeze({
